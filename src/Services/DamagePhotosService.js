@@ -1,8 +1,8 @@
 const DamagePhotosRepo = require("../Repositories/DamagePhotosRepo");
 
 class DamagePhotosService {
-  static save(newDamagePhotos) {
-    return DamagePhotosRepo.save(newDamagePhotos);
+  static save(newDamagePhotos, damage_id) {
+    return DamagePhotosRepo.save(newDamagePhotos, damage_id);
   }
 
   static async getAllDamages() {

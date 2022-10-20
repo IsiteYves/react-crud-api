@@ -53,9 +53,6 @@ module.exports = (sequelize, DataTypes) => {
     damageDescription: {
       type: DataTypes.TEXT('medium'),
       allowNull: false
-    },
-    damagePhotos: {
-      type: DataTypes.TEXT('medium'),
     }
   }, {
     sequelize,

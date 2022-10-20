@@ -2,11 +2,10 @@
 const { DamagePhotos } = require("../Models");
 
 class DamagesPhotosRepo {
-  static async save(data) {
-    for (let datum in data) {
-      DamagePhotos.create(datum);
-    }
-    return data;
+  static async save(data, damage_id) {
+    await data.map(async (datum) => {
+      await DamagePhotos.create({ ...datum, damage_id });
+    });
   }
 
   static async findAll() {
@@ -14,13 +13,13 @@ class DamagesPhotosRepo {
   }
 
   static async findByDamageId(damage_id) {
-    return DamagePhotos.find({ damage_id });
+    return DamagePhotos.findAll({ damage_id });
   }
 
   static async deleteDamagePhotos(ids) {
-    for (let id of ids) {
+    ids.map((id) => {
       DamagePhotos.destroy({ where: { id } });
-    }
+    });
     return { message: `Successfully deleted ${ids.length} photos records` };
   }
 }

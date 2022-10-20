@@ -1,3 +1,4 @@
+// @ts-nocheck
 const router = require("express").Router();
 const DamagesService = require("../../Services/DamagesService");
 const DamagePhotosService = require("../../Services/DamagePhotosService");
@@ -13,10 +14,17 @@ router.post("/", async (req, res) => {
       delete data.damagePhotos;
     }
     let newDamageRecord = await DamagesService.save(data);
-    const newPhotosRecord = await DamagePhotosService.save(
-      req.body.damagePhotos
+    const newPhotosRecords = await DamagePhotosService.save(
+      req.body.damagePhotos,
+      newDamageRecord?.id
     );
-    newDamageRecord.damagePhotos = newPhotosRecord;
+    // if (req.body.damagePhotos.length > 0) {
+    //   const damagePhotos = await DamagePhotosService.getDamagePhotosById(
+    //     newDamageRecord?.id
+    //   );
+    //   console.log('damagePhotos..', damagePhotos);
+    //   newDamageRecord["damagePhotos"] = damagePhotos;
+    // }
     return res.status(200).json(newDamageRecord);
   } catch (e) {
     return res.status(500).json({ error: e.message });

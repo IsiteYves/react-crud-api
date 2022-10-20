@@ -12,14 +12,17 @@ router.delete(
       return res.status(400).json({ error: errors.array() });
 
     const { id } = req.params;
+    const row = await DamagesService.getDamage(id);
+    if (!row)
+    return res.status(404).json({ error: "Damage record not found" });
     try {
-      await DamagesService.deleteDamageById(id);
       const damagesToDelete = await DamagePhotosService.getDamagePhotosById(id);
       const ids = [];
       for (let damage of damagesToDelete) {
         ids.push(damage.id);
       }
       await DamagePhotosService.deleteDamagePhotos(ids);
+      await DamagesService.deleteDamageById(id);
       return res.status(200).json({ status: "Deleted successfully" });
     } catch (e) {
       return res.status(500).json({ error: e.message });

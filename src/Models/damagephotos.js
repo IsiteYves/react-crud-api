@@ -17,6 +17,10 @@ module.exports = (sequelize, DataTypes) => {
     src: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    damage_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false
     }
   }, {
     sequelize,

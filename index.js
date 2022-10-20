@@ -24,7 +24,7 @@ app.use(express.urlencoded({ limit: "50mb", extended: true }));
 app.use("/api", require("./src/Routes"));
 
 app.use(function (req, res, next) {
-  return res.status(404).json({ error: "Resource not found" });
+  return res.status(404).json({ error: "That resource endpoint doesn't exist on this server" });
 });
 
 const { PORT = 4000, HOST } = process.env;
