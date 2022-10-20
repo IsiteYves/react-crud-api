@@ -18,7 +18,7 @@ class DamagesPhotosRepo {
 
   static async deleteDamagePhotos(ids) {
     ids.map((id) => {
-      DamagePhotos.destroy({ where: { id } });
+      DamagePhotos.destroy({ where: { id } });sky
     });
     return { message: `Successfully deleted ${ids.length} photos records` };
   }
