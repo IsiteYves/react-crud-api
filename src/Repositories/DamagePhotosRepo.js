@@ -14,11 +14,14 @@ class DamagesPhotosRepo {
   }
 
   static async findByDamageId(damage_id) {
-    return Damage.findOne({ damage_id });
+    return DamagePhotos.find({ damage_id });
   }
 
-  static async deleteByDamageId(id) {
-    return Damage.destroy({ where: { id } });
+  static async deleteDamagePhotos(ids) {
+    for (let id of ids) {
+      DamagePhotos.destroy({ where: { id } });
+    }
+    return { message: `Successfully deleted ${ids.length} photos records` };
   }
 }
 

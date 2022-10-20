@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const DamagesService = require("../../Services/DamagesService");
+const DamagePhotosService = require("../../Services/DamagePhotosService");
 const { check, validationResult } = require("express-validator");
 
 router.put(
@@ -17,6 +18,9 @@ router.put(
         return res.status(400).json({ message: "Damage record not found" });
       delete req.body.id;
       await DamagesService.updateDamageById(id, req.body);
+      if (req.body?.damagePhotos) {
+        await DamagePhotosService.save(req.body.damagePhotos);
+      }
 
       return res
         .status(200)

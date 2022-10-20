@@ -9,12 +9,12 @@ class DamagePhotosService {
     return DamagePhotosRepo.findAll();
   }
 
-  static async getDamage(damage_id) {
+  static async getDamagePhotosById(damage_id) {
     return DamagePhotosRepo.findByDamageId(damage_id);
   }
 
-  static async deleteByDamageId(damage_id) {
-    return DamagePhotosRepo.deleteByDamageId(damage_id);
+  static async deleteDamagePhotos(ids) {
+    return DamagePhotosRepo.deleteDamagePhotos(ids);
   }
 }
 
