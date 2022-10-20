@@ -1,4 +1,5 @@
-const Damage = require("../Models/Damage");
+// @ts-nocheck
+const { Damage } = require("../Models");
 
 class DamagesRepo {
   static async save(data) {
@@ -6,19 +7,19 @@ class DamagesRepo {
   }
 
   static async findAll() {
-    return Damage.find({}).exec();
+    return Damage.findAll();
   }
 
   static async findById(id) {
-    return Damage.findById(id);
+    return Damage.findOne({ id });
   }
 
   static async updateById(id, data) {
-    return Damage.findByIdAndUpdate(id, data, { new: true }).exec();
+    return Damage.update(data, { where: { id } });
   }
 
   static async deleteById(id) {
-    return Damage.findByIdAndDelete(id);
+    return Damage.destroy({ where: { id } });
   }
 }
 

@@ -1,57 +1,65 @@
-const mongoose = require("mongoose");
-const { Schema } = mongoose;
-
-const Damage = new Schema({
+'use strict';
+const {
+  Model
+} = require('sequelize');
+module.exports = (sequelize, DataTypes) => {
+  class Damage extends Model {
+    /**
+     * Helper method for defining associations.
+     * This method is not a part of Sequelize lifecycle.
+     * The `models/index` file will call this method automatically.
+     */
+    static associate(models) {
+      // define association here
+    }
+  }
+  Damage.init({
     insuranceCompany: {
-      type: String,
-      required: true,
+      type: DataTypes.STRING,
+      allowNull: false
     },
     claimNumber: {
-      type: String,
-      default: ''
+      type: DataTypes.STRING,
+      defaultValue: ''
     },
     claimAddress: {
-      type: String,
-      required: true
+      type: DataTypes.STRING,
+      allowNull: false
     },
     useHomeAddress: {
-      type: Boolean,
-      required: true
+      type: DataTypes.BOOLEAN,
+      allowNull: false
     },
     isExteriorDamage: {
-      type: Boolean,
-      required: true
+      type: DataTypes.BOOLEAN,
+      allowNull: false
     },
     isInteriorDamage: {
-      type: Boolean,
-      required: true
+      type: DataTypes.BOOLEAN,
+      allowNull: false
     },
     causedByWater: {
-      type: Boolean,
-      required: true
-    },
-    causedByWind: {
-      type: Boolean,
-      required: true
+      type: DataTypes.BOOLEAN,
+      allowNull: false
     },
     causedByFire: {
-      type: Boolean,
-      required: true
+      type: DataTypes.BOOLEAN,
+      allowNull: false
     },
     causedByHall: {
-      type: Boolean,
-      required: true
+      type: DataTypes.BOOLEAN,
+      allowNull: false
     },
     damageDescription: {
-      type: String,
-      required: true
+      type: DataTypes.TEXT('medium'),
+      allowNull: false
     },
     damagePhotos: {
-      type: Array,
-      default: []
+      type: DataTypes.TEXT('medium'),
     }
-  },
-  { timestamps: true }
-);
-
-module.exports = mongoose.model("damage", Damage);
+  }, {
+    sequelize,
+    modelName: 'Damage',
+  });
+  return Damage;
+};

@@ -1,0 +1,40 @@
+{
+    "development": {
+      "username": "dD2j7IvSPj",
+      "password": "Y4yno4UbHD",
+      "database": "dD2j7IvSPj",
+      "host": "remotemysql.com",
+      "dialect": "mysql",
+      "define": {
+        "createdAt": "createdAt",
+        "updatedAt": "updatedAt"
+      }, 
+      "subQuery": false
+    },
+    "test": {
+      "username": "dD2j7IvSPj",
+      "password": "Y4yno4UbHD",
+      "database": "dD2j7IvSPj",
+      "host": "remotemysql.com",
+      "dialect": "mysql",
+      "define": {
+        "createdAt": "createdAt",
+        "updatedAt": "updatedAt"
+      }
+  
+     
+    },
+    "production": {
+      "username": "dD2j7IvSPj",
+      "password": "Y4yno4UbHD",
+      "database": "dD2j7IvSPj",
+      "host": "remotemysql.com",
+      "dialect": "mysql",
+      "define": {
+        "createdAt": "createdAt",
+        "updatedAt": "updatedAt"
+      }
+    }
+  }
+  
+  
