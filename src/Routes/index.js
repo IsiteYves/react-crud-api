@@ -1,6 +1,5 @@
 const router =  require("express").Router();
 
-router.use('/surveys', require('./surveys'));
-router.use('/results', require('./results'));
+router.use('/damages', require('./damages'));
 
 module.exports = router;
